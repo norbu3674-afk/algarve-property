@@ -138,7 +138,7 @@ export const property = {
     airport: "Faro Airport — approx. 45 minutes",
     coast: "Approx. 40 minutes to the nearest beach",
     supermarket: "Approx. 15 minutes to the nearest supermarket",
-    description: "The Algarve backcountry is a world apart from the busy coastal resorts. Rolling hills, cork oak forests, traditional villages, and a pace of life that lets you breathe. Yet the beaches, restaurants, and international airport are just a short drive away.",
+    description: "The Algarve backcountry is a world apart from the busy coastal resorts. Rolling hills, cork oak forests, traditional villages, and a pace of life that lets you breathe. Yet the beaches, restaurants, and international airport are just a short drive away. The property's central location makes the entire Algarve your playground — from the dramatic wild west coast to the calm eastern beaches near the Spanish border. Fancy a day trip? Both Lisbon and Sevilla are only about 2.5 hours by car, putting two of Iberia's most vibrant cities within easy reach.",
   },
 
   // Contact info
