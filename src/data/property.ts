@@ -41,7 +41,7 @@ export const property = {
   // Description paragraphs
   description: [
     "Perched on the second-highest mountain range in the Algarve, this extraordinary 2.5-hectare estate offers something rare: a complete, ready-to-live life in one of Europe's most desirable regions.",
-    "Two fully furnished houses, a swimming pool, a meditation room, a bar, and multiple outbuildings sit among terraced gardens with unobstructed views stretching from the rolling hills of the Serra do Caldeirão all the way down to the Atlantic coastline.",
+    "Two fully furnished houses, a swimming pool, a meditation house, a bar, and multiple outbuildings sit among terraced gardens with unobstructed views stretching from the rolling hills of the Serra do Caldeirão all the way down to the Atlantic coastline.",
     "For the entrepreneur or creative, there's a remarkable ~700 m² former factory building — currently used for workshops and storage — waiting to become whatever you dream: a retreat center, artist studios, co-working space, or boutique production facility.",
     "This is not just a property. It's an entire lifestyle, ready for someone who wants to arrive with a suitcase and start living. Fully furnished, right down to a car included in the sale.",
   ],
@@ -86,7 +86,7 @@ export const property = {
     },
     {
       src: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80",
-      alt: "Meditation room",
+      alt: "Meditation house",
       caption: "Meditation House",
     },
   ],
@@ -119,7 +119,7 @@ export const property = {
     },
     {
       title: "Retreat & Wellness",
-      description: "Meditation room, pool, panoramic serenity, and space for groups. A natural wellness destination.",
+      description: "Meditation house, pool, panoramic serenity, and space for groups. A natural wellness destination.",
     },
     {
       title: "Creative Entrepreneurs",
