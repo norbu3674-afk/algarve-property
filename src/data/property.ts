@@ -87,7 +87,7 @@ export const property = {
     {
       src: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80",
       alt: "Meditation room",
-      caption: "Meditation Room",
+      caption: "Meditation House",
     },
   ],
 
