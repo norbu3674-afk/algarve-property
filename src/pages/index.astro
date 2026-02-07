@@ -1,0 +1,582 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { property } from '../data/property';
+---
+
+<Layout title={property.name} description={property.tagline}>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">{property.name}</a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#lifestyle">Lifestyle</a>
+        <a href="#location">Location</a>
+        <a href="#contact" class="nav-cta">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src={property.hero.image} alt={property.hero.alt} class="hero-img" />
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <p class="hero-location">{property.location}</p>
+        <h1 class="hero-title">{property.tagline}</h1>
+        <p class="hero-price">{property.price}</p>
+        <a href="#contact" class="btn">Enquire Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section class="highlights">
+    <div class="container">
+      <div class="highlights-grid">
+        {property.highlights.map((h) => (
+          <div class="highlight-card">
+            <span class="highlight-icon">{h.icon}</span>
+            <h3>{h.title}</h3>
+            <p>{h.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section id="overview" class="section">
+    <div class="container">
+      <h2 class="section-title">The Estate</h2>
+      <div class="overview-content">
+        {property.description.map((p) => (
+          <p>{p}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section section-warm">
+    <div class="container">
+      <h2 class="section-title">Gallery</h2>
+      <p class="section-subtitle">Explore the property</p>
+      <div class="gallery-grid">
+        {property.gallery.map((img) => (
+          <figure class="gallery-item">
+            <img src={img.src} alt={img.alt} loading="lazy" />
+            <figcaption>{img.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Video -->
+  {property.video.url && (
+    <section id="video" class="section">
+      <div class="container">
+        <h2 class="section-title">Video Tour</h2>
+        <div class="video-wrapper">
+          {property.video.url.includes('youtube') || property.video.url.includes('vimeo') ? (
+            <iframe
+              src={property.video.url}
+              title="Property video tour"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            />
+          ) : (
+            <video controls poster={property.video.poster}>
+              <source src={property.video.url} type="video/mp4" />
+            </video>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Video placeholder when no video yet -->
+  {!property.video.url && (
+    <section class="section">
+      <div class="container">
+        <div class="video-placeholder">
+          <img src={property.video.poster} alt="Property views" class="video-poster" />
+          <div class="video-placeholder-overlay">
+            <p>🎥 Video walkthrough coming soon</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Lifestyle -->
+  <section id="lifestyle" class="section section-warm">
+    <div class="container">
+      <h2 class="section-title">Perfect For</h2>
+      <p class="section-subtitle">A property with endless possibilities</p>
+      <div class="lifestyle-grid">
+        {property.idealFor.map((item) => (
+          <div class="lifestyle-card">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section id="location" class="section">
+    <div class="container">
+      <h2 class="section-title">Location</h2>
+      <div class="location-content">
+        <div class="location-text">
+          <p class="location-region">{property.location_details.region}</p>
+          <p>{property.location_details.description}</p>
+          <ul class="location-details">
+            {property.location_details.nearestTown !== "TBD" && (
+              <li><strong>Nearest town:</strong> {property.location_details.nearestTown}</li>
+            )}
+            <li><strong>Airport:</strong> {property.location_details.airport}</li>
+            <li><strong>Coast:</strong> {property.location_details.coast}</li>
+          </ul>
+        </div>
+        <div class="location-map">
+          <!-- REPLACE: Add a Google Maps embed or static map image -->
+          <div class="map-placeholder">
+            <p>📍 Map coming soon</p>
+            <p class="map-sub">Serra do Caldeirão, Algarve, Portugal</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section section-dark">
+    <div class="container">
+      <h2 class="section-title light">Interested?</h2>
+      <p class="section-subtitle light">Get in touch to arrange a viewing or learn more</p>
+      <div class="contact-info">
+        {property.contact.email !== "TBD@example.com" && (
+          <a href={`mailto:${property.contact.email}`} class="contact-method">
+            ✉️ {property.contact.email}
+          </a>
+        )}
+        {property.contact.phone && (
+          <a href={`tel:${property.contact.phone}`} class="contact-method">
+            📞 {property.contact.phone}
+          </a>
+        )}
+        {property.contact.whatsapp && (
+          <a href={`https://wa.me/${property.contact.whatsapp}`} class="contact-method" target="_blank">
+            💬 WhatsApp
+          </a>
+        )}
+        {property.contact.email === "TBD@example.com" && (
+          <p class="contact-placeholder">Contact details coming soon</p>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; {new Date().getFullYear()} {property.name}. All rights reserved.</p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  /* Navigation */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-brand {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  .nav-links a {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  .nav-cta {
+    background: var(--color-primary) !important;
+    color: var(--color-white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+  }
+  .nav-cta:hover {
+    opacity: 0.9;
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+  }
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-content {
+    color: var(--color-white);
+    padding: 2rem;
+  }
+  .hero-location {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+  }
+  .hero-price {
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  /* Button */
+  .btn {
+    display: inline-block;
+    background: var(--color-accent);
+    color: var(--color-white);
+    padding: 0.9rem 2.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn:hover {
+    background: #73570f;
+    text-decoration: none;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Sections */
+  .section {
+    padding: 5rem 0;
+  }
+  .section-warm {
+    background: var(--color-warm);
+  }
+  .section-dark {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+  .section-title.light {
+    color: var(--color-white);
+  }
+  .section-subtitle {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+  }
+  .section-subtitle.light {
+    color: rgba(255,255,255,0.8);
+  }
+
+  /* Highlights */
+  .highlights {
+    padding: 3rem 0;
+    background: var(--color-white);
+    margin-top: -3rem;
+    position: relative;
+    z-index: 10;
+  }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  .highlight-card {
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+  .highlight-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .highlight-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+  .highlight-card p {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+
+  /* Overview */
+  .overview-content {
+    max-width: 800px;
+    margin: 2rem auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .overview-content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-text);
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .gallery-item {
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--color-white);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  .gallery-item:hover img {
+    transform: scale(1.03);
+  }
+  .gallery-item figcaption {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  /* Video */
+  .video-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+  }
+  .video-wrapper iframe,
+  .video-wrapper video {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+  }
+  .video-placeholder {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .video-poster {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+  .video-placeholder-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-placeholder-overlay p {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+
+  /* Lifestyle */
+  .lifestyle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+  }
+  .lifestyle-card {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .lifestyle-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--color-primary);
+  }
+  .lifestyle-card p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+
+  /* Location */
+  .location-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-top: 2rem;
+  }
+  .location-region {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+  .location-text p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+  .location-details {
+    list-style: none;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .location-details li {
+    font-size: 0.95rem;
+  }
+  .map-placeholder {
+    background: var(--color-warm);
+    border-radius: 8px;
+    padding: 4rem 2rem;
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .map-placeholder p {
+    font-size: 1.2rem;
+    color: var(--color-text-light);
+  }
+  .map-sub {
+    font-size: 0.9rem !important;
+    margin-top: 0.5rem;
+  }
+
+  /* Contact */
+  .contact-info {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .contact-method {
+    background: rgba(255,255,255,0.15);
+    color: var(--color-white) !important;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+  .contact-method:hover {
+    background: rgba(255,255,255,0.25);
+    text-decoration: none;
+  }
+  .contact-placeholder {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.1rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    background: var(--color-warm);
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none; /* TODO: Add hamburger menu */
+    }
+    .highlights-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .location-content {
+      grid-template-columns: 1fr;
+    }
+    .hero {
+      min-height: 500px;
+    }
+  }
+</style>
