@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 import { property } from '../data/property';
 ---
 
@@ -37,7 +38,9 @@ import { property } from '../data/property';
       <div class="highlights-grid">
         {property.highlights.map((h) => (
           <div class="highlight-card">
-            <span class="highlight-icon">{h.icon}</span>
+            <div class="highlight-icon">
+              <Icon name={h.icon} size={40} />
+            </div>
             <h3>{h.title}</h3>
             <p>{h.description}</p>
           </div>
@@ -142,6 +145,7 @@ import { property } from '../data/property';
             )}
             <li><strong>Airport:</strong> {property.location_details.airport}</li>
             <li><strong>Coast:</strong> {property.location_details.coast}</li>
+            <li><strong>Supermarket:</strong> {property.location_details.supermarket}</li>
           </ul>
         </div>
         <div class="location-map">
@@ -363,9 +367,9 @@ import { property } from '../data/property';
     padding: 1.5rem 1rem;
   }
   .highlight-icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.75rem;
   }
   .highlight-card h3 {
     font-family: var(--font-heading);

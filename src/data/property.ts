@@ -26,7 +26,7 @@ export const property = {
     mainHouses: 2,
     pool: true,
     additionalBuildings: [
-      "Meditation room",
+      "Meditation house",
       "Laundry house",
       "Bar",
       "Sleepout",
@@ -101,14 +101,14 @@ export const property = {
 
   // Key features for the highlights section
   highlights: [
-    { icon: "🏠", title: "2 Houses", description: "Fully furnished and move-in ready" },
-    { icon: "🏊", title: "Swimming Pool", description: "Private pool with panoramic views" },
-    { icon: "🏭", title: "700 m² Building", description: "Former factory — endless potential" },
-    { icon: "🧘", title: "Meditation Room", description: "Dedicated space for mindfulness" },
-    { icon: "🍸", title: "Bar & Sleepout", description: "Entertainment ready" },
-    { icon: "🚗", title: "Car Included", description: "Hit the ground running" },
-    { icon: "🌄", title: "Stunning Views", description: "Hills to coastline, unobstructed" },
-    { icon: "🌿", title: "2.5 Hectares", description: "Space to breathe and grow" },
+    { icon: "house", title: "2 Houses", description: "Fully furnished and move-in ready" },
+    { icon: "pool", title: "Swimming Pool", description: "Private pool with panoramic views" },
+    { icon: "factory", title: "700 m² Building", description: "Former factory — endless potential" },
+    { icon: "meditation", title: "Meditation House", description: "Dedicated space for mindfulness" },
+    { icon: "bar", title: "Bar & Sleepout", description: "Entertainment ready" },
+    { icon: "car", title: "Car Included", description: "Hit the ground running" },
+    { icon: "views", title: "Stunning Views", description: "Hills to coastline, unobstructed" },
+    { icon: "land", title: "2.5 Hectares", description: "Space to breathe and grow" },
   ],
 
   // Lifestyle / ideal buyer section
@@ -135,8 +135,9 @@ export const property = {
   location_details: {
     region: "Serra do Caldeirão, Algarve",
     nearestTown: "TBD", // Update with actual nearest town
-    airport: "Faro Airport — approx. TBD minutes", // Update with actual drive time
-    coast: "Approx. TBD minutes to the nearest beach", // Update
+    airport: "Faro Airport — approx. 45 minutes",
+    coast: "Approx. 40 minutes to the nearest beach",
+    supermarket: "Approx. 15 minutes to the nearest supermarket",
     description: "The Algarve backcountry is a world apart from the busy coastal resorts. Rolling hills, cork oak forests, traditional villages, and a pace of life that lets you breathe. Yet the beaches, restaurants, and international airport are just a short drive away.",
   },
 
